@@ -1,12 +1,12 @@
 // Scale Factor is 100 (10 [mV]/[deg C]) 
-// Accuracy is +/- 2 for analog readings
+// Accuracy is +/- 2 
 // Built-in offset of 0.5 V -> specified to read negative temperatures
 
 
 // the analog pin number connected to the TMP36
 int analog_a0 = A0;
 // delay between sensor reads
-int readDelay = 100;
+int readDelay = 1000;
 
 void setup()
 {
@@ -31,6 +31,8 @@ void loop()
     Serial.print(voltage_tmp36); 
     Serial.print(" ");
     Serial.println(temperature_C); 
+    //Serial.print(voltage_tmp36); Serial.println(" volts");
+    //Serial.print(temperatureC); Serial.println(" degrees C");
 
 
     // delay between readings since the change is gradual
