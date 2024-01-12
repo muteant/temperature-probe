@@ -1,3 +1,4 @@
+
 // Scale Factor is 100 (10 [mV]/[deg C]) 
 // Accuracy is +/- 2 for analog readings
 // Built-in offset of 0.5 V -> specified to read negative temperatures
