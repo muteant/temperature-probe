@@ -1,16 +1,16 @@
 # Import useful libraries
 
-from datetime import datetime 
+from datetime import datetime # for getting accurate date time 
 import serial # Connect to arduino/read values
-import csv
-import time
+import csv # For exporting file
+import time # For use in sampling
 
 
 # Board Setup
-arduino_port = "/dev/ttyACM0" 
-baud = 9600
+arduino_port = "/dev/ttyACM0" # You can check your connections with /dev/tty*
+baud = 9600 # Match this to arduino
 fileName="analog-data.csv" # file to save recorded data
-sensor_data =[]
+sensor_data =[] #empty array for storing all the data
 
 # Read Serial Port and open file
 ser = serial.Serial(arduino_port, baud) # Read serial port
@@ -20,7 +20,7 @@ print("Created file")
 
 
 # Sampling 
-profile_length = int(input("Enter total length of fermentation in seconds: ")) # [seconds]
+profile_length = int(input("Enter total length of fermentation profile in seconds: ")) # [seconds]
 sample_resolution = int(input("Enter number of samples to be recorded per hour: ")) # [samples/hour]
 
 # Data Collection 
@@ -34,7 +34,7 @@ for time in profile_length:
     
     extracted_data = decode_serial_data[0:][:-2] # sig figs
     
-    data_point = (datetime.now()),extracted_data.split(" ")
+    data_point = datetime.now(),extracted_data.split(" ")
     
     sensor_data.append(data_point)
     
