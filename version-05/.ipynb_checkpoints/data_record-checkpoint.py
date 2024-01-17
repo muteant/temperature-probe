@@ -9,7 +9,7 @@ import time # For use in sampling
 # Board Setup
 arduino_port = "/dev/ttyACM0" # You can check your connections with /dev/tty*
 baud = 9600 # Match this to arduino
-fileName="analog-data.csv" # file to save recorded data
+fileName=str(input("Enter data file name (i.e: analog-data.csv)"))# "analog-data.csv" # file to save recorded data
 sensor_data =[] #empty array for storing all the data
 
 # Read Serial Port and open file
