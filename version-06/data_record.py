@@ -16,19 +16,19 @@ sensor_data =[] #empty array for storing all the data
 # Read Serial Port and open file
 ser = serial.Serial(arduino_port, baud) # Read serial port
 print("Connected to Arduino port:", arduino_port)
-file = open('../Data/'fileName, "a") # append fileName (will create new if no file exists)
+file = open(fileName, "a") # append fileName (will create new if no file exists)
 print("Created file")
 
 
 # Sampling 
-sample_resolution = 360 #int(input("Enter number of samples to be recorded per hour: ")) # [samples/hour]
-runTime = int(input("Enter runTime for this profile in Seconds")) # [Seconds]
 
-# Data Collection 
+time_between_samples = 60 # seconds (60 is 5 mins)
+
+steps =60
+
 sensor_data = [] #store data
-rest_time = 360/sample_resolution # How long between samples to save and record serial
 
-while runTime > 0:
+while steps > 0:
     
     serial_data=ser.readline()    
 
@@ -40,8 +40,8 @@ while runTime > 0:
     
     sensor_data.append(data_for_upload)
     
-    time.sleep(rest_time)
-    runTime -= 1
+    time.sleep(time_between_samples)
+    steps -= 1
 
 
 # Store the data

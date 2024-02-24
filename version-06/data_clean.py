@@ -4,7 +4,7 @@ import pandas as pd
 from datetime import datetime
 
 # Import recorded data as a panadas DataFrame
-dataset = pd.read_csv(('/Data/analog-data.csv'), names = ['time', 'recorded_data'])
+dataset = pd.read_csv(('analog-data.csv'), names = ['time', 'recorded_data'])
 
 # Seperate recorded data into new columns
 dataset[['Analog','Voltage [V]','Temperature [C]']] = dataset['recorded_data'].str.split(' ', expand=True)
